@@ -138,16 +138,47 @@ Node* search_linked_list(Node *p,int key)
     return 0;
 }
 
+// Insertion in linked list using index
+void insert_index(int pos,int x)
+{
+    Node *t;
+    Node *p;
+    if(pos==0)
+    {
+        t=new Node;
+        t->data=x;
+        t->next=first;
+        first=t;
+    }
+    else if(pos>0)
+    {
+        p=first;
+        for(int i=0; i<pos-1; i++)
+            p=p->next;
+        if(p)
+        {
+            t=new Node;
+            t->data=x;
+            t->next=p->next;
+            p->next=t;
+        }
+    }
+}
+
+
+
 
 
 
 int main()
 {
-   int A[]={15,14,13,12,11,10};
+   int A[]={3,7,9,15,20};
 
-   create(A,6);
+   create(A,5);
    display(first);
    cout<<"\n";
+
+
 
 
 
