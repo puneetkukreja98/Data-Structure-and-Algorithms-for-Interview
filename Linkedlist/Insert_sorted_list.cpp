@@ -67,7 +67,7 @@ int main()
    create(A,5);
    display(first);
    cout<<"\n";
-   Insert_sorted(6);
+   Insert_sorted(2);
    display(first);
 
 
