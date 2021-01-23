@@ -1,14 +1,15 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+
 struct Node
 {
     int data;
     Node *next;
 };
 Node *first=NULL;
-Node *second=NULL;
 Node *third=NULL;
 Node *last=NULL;
+
 
 // Creation of linked list
 void create(int A[], int n)
@@ -30,25 +31,6 @@ void create(int A[], int n)
         last=t;
     }
 }
-void create_two(int B[], int n)
-{
-    int i;
-    Node *t;
-    Node *last;
-    second = new Node;
-
-    second->data=B[0];
-    second->next=NULL;
-    last=second;
-    for(i=1; i<n; i++)
-    {
-        t=new Node;
-        t->data=B[i];
-        t->next=NULL;
-        last->next=t;
-        last=t;
-    }
-}
 
 // Display linked list
 void display(Node *p)
@@ -60,9 +42,7 @@ void display(Node *p)
         p=p->next;
     }
 }
-
-// Merge to sorted linked list
-void merge_sorted_list(Node *f, Node *s)
+Node* merge_sorted_list(Node *f, Node *s)
 {
     if(f->data<s->data)
     {
@@ -99,26 +79,100 @@ void merge_sorted_list(Node *f, Node *s)
     else
         last->next=s;
 }
+void mergeSort(Node* head) {
+
+    Node *low=head;
+    Node *mid;
+    Node *high=NULL;
+
+    Node *slow=head;
+    Node *fast=head;
+    Node *cc=head;
+    Node *slow_back;
+    int c=0;
+    while(cc)
+    {
+        c++;
+        cc=cc->next;
+    }
+
+     if(head)
+
+    {
+      while(fast!=NULL && fast->next!=NULL)
+      {
+          fast=fast->next->next;
+          slow_back=slow;
+          slow=slow->next;
+      }
+    }
+    if(c%2==0)
+    {
+        mid=slow_back;
+    }
+    else
+    {
+       mid=slow;
+    }
+
+   Node *p=head;
+   while(p->next)
+   {
+       p=p->next;
+   }
+   high=p;
 
 
 
+    /*cout<<low->data<<"\n";
+    cout<<mid->data<<"\n";
+    cout<<high->data<<"\n";*/
+
+
+    Node *fff=low;
+    Node *secc=mid->next;
+    mid->next=NULL;
+
+
+   /* while(fff)
+    {
+        cout<<fff->data<<" ";
+        fff=fff->next;
+    }
+    cout<<"\n";
+    while(secc)
+    {
+        cout<<secc->data<<" ";
+        secc=secc->next;
+    }*/
+
+    merge_sorted_list(fff, secc);
+
+
+
+
+
+
+
+
+
+
+
+}
 int main()
 {
+   int A[]={2,5,8,12,3,6,7,10};
+   //int A[]={1,2,3,4,5};
 
-
-
-    int A[]={10,12,14,15,16};
-    int B[]={11,13,14,18,19};
-
-   create(A,5);
-   create_two(B,5);
-   display(first);
-   cout<<"\n";
-   display(second);
-   cout<<"\n";
-   merge_sorted_list(first,second);
+   create(A,8);
+   mergeSort(first);
    display(third);
-   cout<<"\n";
+
+
+
+
+
 
     return 0;
 }
+
