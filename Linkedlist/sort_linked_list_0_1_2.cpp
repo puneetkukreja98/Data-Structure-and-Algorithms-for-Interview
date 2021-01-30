@@ -41,7 +41,8 @@ void display(Node *p)
 }
 
 Node* segregate(Node *head) {
-     Node *p=head;
+
+  Node *p=head;
   int count0=0;
   int count1=0;
   int count2=0;
